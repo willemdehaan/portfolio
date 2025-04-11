@@ -39,17 +39,53 @@ body nav {
     }
   }
 }
-form input,
-form textarea,
-form button,
-form select {
-  font: inherit;
-  display: block;
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;  /* Label in the first column, input in the second */
+  gap: 1em;                        /* Adds space between form controls */
   width: 100%;
-  box-sizing: border-box;
-  margin-block: 1em;
+  max-width: 40rem;                 /* Optional max-width for form */
+  margin: auto;
+  font: inherit;
 }
-form label {
-  display: block;
-  margin-bottom: 0.5em;
+
+/* Label styling */
+label {
+  display: grid;
+  grid-template-columns: subgrid;   /* Use subgrid to inherit grid layout from the form */
+  grid-column: 1 / -1;              /* Makes the label span across the entire row */
+}
+
+/* Label text */
+label span {
+  grid-column: 1;                   /* Puts label text in the first column */
+  align-self: center;               /* Centers the label text vertically */
+}
+
+/* Form controls (inputs, textarea) */
+label input,
+label textarea {
+  grid-column: 2;                   /* Puts the input/textarea in the second column */
+  width: 100%;                       /* Ensures the input/textarea fills the available space */
+  box-sizing: border-box;            /* Ensures padding doesn't overflow */
+}
+
+/* Button styling */
+button {
+  grid-column: 1 / -1;              /* Makes the button span both columns */
+  justify-self: start;              /* You can change to 'center' or 'end' for button alignment */
+  padding: 0.75em 1.5em;            /* Button padding */
+}
+
+/* Responsive adjustments (optional) */
+@media (max-width: 500px) {
+  form {
+    grid-template-columns: 1fr;      /* Stack form controls in a single column */
+  }
+
+  label span,
+  label input,
+  label textarea {
+    grid-column: 1;                 /* Stack inputs and labels vertically */
+  }
 }
