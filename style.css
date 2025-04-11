@@ -42,3 +42,10 @@ body nav {
 body input {font: inherit;}
 body textarea {font: inherit;}
 body button {font: inherit;}
+body form {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-block: 1.5em;
+  padding: 0.5em;
+}
