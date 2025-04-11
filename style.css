@@ -4,17 +4,19 @@ body nav {
   display: flex;
   border-bottom: 1px solid oklch(80% 3% 200);
   margin-bottom: 1em;
-}
-body nav a {
+
+  a {
     flex: 1;
     text-align: center;
     text-decoration: none;
     color: inherit;
     padding: 0.5em;
-}
-body nav a.current {
+
+    &.current {
       border-bottom: 0.4em solid oklch(85% 3% 200);
       padding-bottom: 0.1em;
+    }
+  }
 }
 body {
     /* Set line height to 1.5 times the font size
