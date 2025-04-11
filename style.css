@@ -39,7 +39,7 @@ body nav {
     }
   }
 }
-form {
+body form {
   display: grid;
   grid-template-columns: auto 1fr;  /* Label in the first column, input in the second */
   gap: 1em;                        /* Adds space between form controls */
@@ -50,28 +50,28 @@ form {
 }
 
 /* Label styling */
-label {
+body form label {
   display: grid;
   grid-template-columns: subgrid;   /* Use subgrid to inherit grid layout from the form */
   grid-column: 1 / -1;              /* Makes the label span across the entire row */
 }
 
 /* Label text */
-label span {
+body form label span {
   grid-column: 1;                   /* Puts label text in the first column */
   align-self: center;               /* Centers the label text vertically */
 }
 
 /* Form controls (inputs, textarea) */
-label input,
-label textarea {
+body form label input,
+body form label textarea {
   grid-column: 2;                   /* Puts the input/textarea in the second column */
   width: 100%;                       /* Ensures the input/textarea fills the available space */
   box-sizing: border-box;            /* Ensures padding doesn't overflow */
 }
 
 /* Button styling */
-button {
+body form button {
   grid-column: 1 / -1;              /* Makes the button span both columns */
   justify-self: start;              /* You can change to 'center' or 'end' for button alignment */
   padding: 0.75em 1.5em;            /* Button padding */
