@@ -10,8 +10,9 @@ body {
      */
   font: 100%/1.5 system-ui;
   max-width: 100ch;
-  margin-inline: max(1em, (100% - 100ch) / 2);
-  padding: 5%;
+  margin-inline: auto;
+  padding-inline: clamp(1em, 5vw, 3em);
+  padding-block: 2em;
 }
 body nav {
   display: flex;
