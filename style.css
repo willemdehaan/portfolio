@@ -41,43 +41,45 @@ body nav {
 }
 form {
   display: grid;
-  grid-template-columns: auto 1fr;  /* Label on the left, input on the right */
-  gap: 1em;                         /* Space between form controls */
+  grid-template-columns: auto 1fr; /* Label column + Input column */
+  gap: 1em;
   width: 100%;
   max-width: 40rem;
-  margin: auto;
+  margin-inline: auto;
 }
 
-/* Allow label children (span + input) to be placed directly in the grid */
+/* Each label becomes its own grid using subgrid */
 label {
-  display: contents;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1; /* Span both columns of the form */
+  align-items: center;
 }
 
-/* Label text goes in the first column */
+/* Align label text to the left column */
 label span {
   grid-column: 1;
-  align-self: center;
+  text-align: left;
 }
 
-/* Input fields go in the second column */
+/* Align input/textarea to right column */
 label input,
 label textarea {
   grid-column: 2;
   width: 100%;
   box-sizing: border-box;
   padding: 0.5em;
+  font: inherit;
 }
 
-/* Button spans both columns and is centered */
+/* Submit button spans the entire form */
 button {
   grid-column: 1 / -1;
   justify-self: center;
   padding: 0.75em 1.5em;
-  background-color: var(--color-accent);
-  color: black;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   font: inherit;
+  border: none;
+  border-radius: 0.25em;
   cursor: pointer;
 }
 
