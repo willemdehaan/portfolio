@@ -10,7 +10,7 @@ body {
      */
   font: 100%/1.5 system-ui;
   max-width: 100ch;
-  margin-inline: auto;
+  margin-inline: max(1em, (100% - 100ch) / 2);
   padding: 5%;
 }
 body nav {
@@ -100,4 +100,8 @@ button:hover {
   label textarea {
     grid-column: 1;                 /* Stack inputs and labels vertically */
   }
+}
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
 }
