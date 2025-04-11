@@ -1,3 +1,7 @@
+html {
+  --color-accent:oklch(0.6 0.0982 234.64);
+  accent-color: var(--color-accent);
+}
 ul {display: contents;}
 li {display: contents;}
 body nav {
@@ -15,6 +19,12 @@ body nav {
     &.current {
       border-bottom: 0.4em solid oklch(85% 3% 200);
       padding-bottom: 0.1em;
+    }
+    &:hover {
+      border-bottom: 0.4em solid var(--color-accent);
+      background-color: oklch(from var(--color-accent) 95% 5% h);
+      font-weight: bold; /* optional */
+      color: var(--color-accent);
     }
   }
 }
