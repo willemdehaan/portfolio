@@ -80,13 +80,13 @@ button {
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
-  &:hover {
-    border-color: 0.4em solid var(--color-accent);
-    background-color: oklch(from var(--color-accent) 95% 5% h);
-    font-weight: bold;
-    color: var(--color-accent);
-    border-radius: 0.5em;
-  }
+}
+button:hover {
+  border: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+  font-weight: bold;
+  color: var(--color-accent);
+  border-radius: 0.5em;
 }
 
 /* Responsive adjustments (optional) */
