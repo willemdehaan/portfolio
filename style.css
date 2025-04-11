@@ -39,13 +39,17 @@ body nav {
     }
   }
 }
-body input {font: inherit;}
-body textarea {font: inherit;}
-body button {font: inherit;}
-body form {
+form input,
+form textarea,
+form button,
+form select {
+  font: inherit;
   display: block;
   width: 100%;
   box-sizing: border-box;
-  margin-block: 1.5em;
-  padding: 0.5em;
+  margin-block: 1em;
+}
+form label {
+  display: block;
+  margin-bottom: 0.5em;
 }
