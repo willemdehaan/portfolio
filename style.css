@@ -75,7 +75,6 @@ label textarea {
 /* Submit button spans the entire form */
 button {
   grid-column: 1 / -1;
-  justify-self: center;
   padding: 0.75em 1.5em;
   font: inherit;
   border: none;
