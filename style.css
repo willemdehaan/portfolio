@@ -137,85 +137,6 @@ h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
-
-/* Sticky Header Styling */
-.resume-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 200px;
-  background-color: white;
-  z-index: 10;
-  margin-top: 0;
-}
-
-/* Banner styling within the header */
-/*
-.resume-banner {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  border-bottom: 1px solid #ccc;
-}
-
-.resume-banner img {
-  max-height: 100%;
-  transition: opacity 0.3s ease-in-out;
-  pointer-events: none;
-}
-@media (max-height: 500px) {
-  .resume-banner {
-      display: none;
-  }
-}
-body.resume main {
-  height: calc(100vh - 260px);
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-body.resume section {
-  height: 100vh;
-  scroll-snap-align: start;
-  padding: 2em;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-body.resume section h2 {
-  font-size: 2rem;
-  margin-bottom: 1em;
-}
-/*
-.resume-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: white;
-  z-index: 10;
-  border-bottom: 1px solid #ccc;
-}
-
-.resume-banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  background-color: white;
-}
-
-.resume-banner img {
-  max-height: 100%;
-  background-color: white;
-  pointer-events: none;
-}
 /* === Resume Header and Banner === */
 .resume-header {
   position: sticky;
@@ -277,5 +198,3 @@ body.resume section h2 {
   font-size: 2rem;
   margin-bottom: 1em;
 }
-
-
