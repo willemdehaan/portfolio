@@ -138,7 +138,6 @@ h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-/* Sticky Header Styling */
 .resume-header {
   position: sticky;
   top: 0;
@@ -147,55 +146,68 @@ h2, h3, h4, h5, h6 {
   background-color: white;
   z-index: 10;
   margin-top: 0;
-}
-
-/* Banner styling within the header */
-.resume-banner {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
   border-bottom: 1px solid #ccc;
 }
 
+.resume-banner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
 .resume-banner img {
+  background-color: white;
   max-height: 100%;
-  transition: opacity 0.3s ease-in-out;
   pointer-events: none;
 }
 
 /* Optional: Hide banner on small viewports */
 @media (max-height: 500px) {
-  .resume-banner {
-      display: none;
+  .resume-header {
+    display: none;
   }
 }
 
-/* Main content area */
+/* ===== Scroll Snap Layout ===== */
+body.resume {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
 body.resume main {
-  height: calc(100vh - 260px);
-  overflow-y: auto;
+  height: 100vh;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
-/* Each section takes full screen height */
+/* Each section fills the screen and centers content */
 body.resume section {
   height: 100vh;
   scroll-snap-align: start;
-  padding: 2em;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2em;
+  box-sizing: border-box;
+  overflow-y: auto; /* allows scroll if content is too tall */
 }
 
-/* Heading styling */
+/* Make inner content readable and not too wide */
+body.resume section > * {
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Section headings */
 body.resume section h2 {
   font-size: 2rem;
   margin-bottom: 1em;
 }
-
