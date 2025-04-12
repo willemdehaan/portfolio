@@ -149,6 +149,7 @@ h2, h3, h4, h5, h6 {
   background-color: white;
   z-index: 10;
   border-bottom: 1px solid #ccc;
+  margin-top: 0;
 }
 
 /* Banner styling within the header */
@@ -181,10 +182,6 @@ body.resume main {
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-}
-
-.resume-header {
-  margin-top: 0; /* Make sure header is not pushed by margin-top */
 }
 
 /* Each section takes full screen height */
