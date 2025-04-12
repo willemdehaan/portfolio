@@ -12,7 +12,7 @@ body {
     margin: 0;
     padding-inline: clamp(1rem, 4vw, 2rem);
     padding-block: 2rem;
-    margin-inline: max(1em, (100% - 100ch) / 2);
+    margin-inline: max(1em, (100% - 140ch) / 2);
 }
 body nav {
   display: flex;
@@ -105,4 +105,5 @@ button:hover {
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
 }
