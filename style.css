@@ -140,6 +140,7 @@ h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* Sticky Banner Styling */
 .resume-banner {
   position: sticky;
   top: 0;
@@ -159,27 +160,31 @@ h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-/* Optional: hide banner on small viewports */
+/* Optional: Hide banner on small viewports */
 @media (max-height: 500px) {
   .resume-banner {
     display: none;
   }
 }
 
-/* Resume page scroll snap */
+/* Resume Page Scroll Snap */
 body.resume {
   overflow: hidden;
+  margin: 0;
 }
 
 body.resume main {
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  margin-top: 200px; /* prevent overlap under sticky banner */
 }
 
-/* Each resume section takes full screen height */
+.resume-header {
+  margin-top: 0; /* Make sure header is not pushed by margin-top */
+}
+
+/* Each section takes full screen height */
 body.resume section {
   height: 100vh;
   scroll-snap-align: start;
@@ -196,3 +201,4 @@ body.resume section h2 {
   font-size: 2rem;
   margin-bottom: 1em;
 }
+
