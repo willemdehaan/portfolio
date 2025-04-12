@@ -139,3 +139,60 @@ h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+
+.resume-banner {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid #ccc;
+}
+
+.resume-banner img {
+  max-height: 100%;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+/* Optional: hide banner on small viewports */
+@media (max-height: 500px) {
+  .resume-banner {
+    display: none;
+  }
+}
+
+/* Resume page scroll snap */
+body.resume {
+  overflow: hidden;
+}
+
+body.resume main {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  margin-top: 200px; /* prevent overlap under sticky banner */
+}
+
+/* Each resume section takes full screen height */
+body.resume section {
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 2em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Heading styling */
+body.resume section h2 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+}
