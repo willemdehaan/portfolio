@@ -107,3 +107,35 @@ button:hover {
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
 }
+
+/* Each article becomes a subgrid container aligned with the main grid */
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+}
+
+/* Remove extra spacing on h2 to make layout tighter */
+.projects h2 {
+  margin: 0;
+}
+
+/* Optional: ensure images inside articles align better */
+.projects article img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Heading styling across the page */
+h1 {
+  font-size: 400%;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
