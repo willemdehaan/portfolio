@@ -161,12 +161,6 @@ h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-/* === Main Content Scroll Snap === */
-body.resume {
-  margin: 0;
-  font-family: sans-serif;
-}
-
 body.resume main {
   height: 100vh;
   overflow-y: scroll;
