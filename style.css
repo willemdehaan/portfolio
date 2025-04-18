@@ -192,3 +192,9 @@ body.resume section h2 {
   font-size: 2rem;
   margin-bottom: 1em;
 }
+canvas {
+  color-scheme: dark;
+}
+canvas text {
+  color-scheme: dark;
+}
