@@ -99,8 +99,8 @@ if (header) header.prepend(nav);
     </select>
     `;
 
-    if (banner && location.pathname.includes("/resume")) {
-    banner.appendChild(label);
+    if (header && location.pathname.includes("/resume")) {
+    header.appendChild(label);
     } else {
     document.body.insertAdjacentElement("afterbegin", label);
     }
