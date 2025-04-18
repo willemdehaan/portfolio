@@ -50,7 +50,7 @@ for (let p of pages) {
 
   nav.append(a);
 }
-if (banner) banner.append(nav);
+if (banner) banner.prepend(nav);
 
 // Create the dropdown for theme selection
 document.body.insertAdjacentHTML(
@@ -67,7 +67,7 @@ document.body.insertAdjacentHTML(
     `
   );
 
-  if (banner) banner.append(colorLabel);
+  //if (banner) banner.prepend(colorLabel);
   
   // Grab the select element
   const select = document.querySelector('.color-scheme select');
