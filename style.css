@@ -29,7 +29,7 @@ nav {
     padding: 0.5em;
 
     &.current {
-      border-bottom: 0.1em solid var(--border-color);
+      border-bottom: 0.4em solid var(--border-color);
       padding-bottom: 0.1em;
       font-weight: bold;
     }
@@ -83,12 +83,13 @@ button {
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 button:hover {
-  border: 0.4em solid var(--color-accent);
+  box-shadow: 0 0 0 0.4em solid var(--color-accent);
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   font-weight: bold;
-  color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  color: var(--color-accent);
   border-radius: 0.5em;
 }
 
