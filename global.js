@@ -100,7 +100,7 @@ if (header) header.prepend(nav);
     `;
 
     if (header && location.pathname.includes("/resume")) {
-    header.appendChild(label);
+    header.prepend(label);
     } else {
     document.body.insertAdjacentElement("afterbegin", label);
     }
@@ -119,8 +119,7 @@ if (header) header.prepend(nav);
     }
 
     select.addEventListener("input", (e) => {
-    const newScheme = e.target.value;
-    setColorScheme(newScheme);
-    localStorage.colorScheme = newScheme;
+    setColorScheme(e.target.value);
+    localStorage.colorScheme = e.target.value;
     });
 });
