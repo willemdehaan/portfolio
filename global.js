@@ -5,6 +5,8 @@ function $$(selector, context = document) {
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".resume-header");
 
+    console.log(header);
+
 
 // let navLinks = $$("nav a")
 // let currentLink = navLinks.find(
