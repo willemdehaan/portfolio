@@ -7,13 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log(header);
 
-
-// let navLinks = $$("nav a")
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname,
-//   );
-//   currentLink?.classList.add('current');
-
 // Step 3.1: Navigation menu setup
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"                  // Local server
@@ -93,38 +86,40 @@ if (header) {
     setColorScheme(newScheme);
     localStorage.colorScheme = newScheme;
   });
-// const label = document.createElement("label");
-// label.className = "color-scheme";
-// label.innerHTML = `
-// Theme:
-// <select>
-//     <option value="light dark">Automatic</option>
-//     <option value="light">Light</option>
-//     <option value="dark">Dark</option>
-// </select>
-// `;
+  const sections = document.querySelectorAll('body.resume section');
+  let current = 0;
+  let isScrolling = false;
 
-// if (header && location.pathname.includes("/resume")) {
-// header.prepend(label);
-// } else {
-// document.body.insertAdjacentElement("afterbegin", label);
-// }
+  const scrollToIndex = (index) => {
+    if (index >= 0 && index < sections.length) {
+      isScrolling = true;
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+      current = index;
 
-// // === Theme logic ===
-// const select = label.querySelector("select");
+      // Debounce to prevent rapid scroll
+      setTimeout(() => {
+        isScrolling = false;
+      }, 1000); // adjust this as needed
+    }
+  };
 
-// function setColorScheme(scheme) {
-// document.documentElement.style.setProperty("color-scheme", scheme);
-// }
+  // Listen to wheel events
+  document.querySelector('main').addEventListener('wheel', (e) => {
+    if (isScrolling) return;
+    if (e.deltaY > 0) {
+      scrollToIndex(current + 1);
+    } else if (e.deltaY < 0) {
+      scrollToIndex(current - 1);
+    }
+  }, { passive: true });
 
-// if ("colorScheme" in localStorage) {
-// const savedScheme = localStorage.colorScheme;
-// setColorScheme(savedScheme);
-// select.value = savedScheme;
-// }
-
-// select.addEventListener("input", (e) => {
-// setColorScheme(e.target.value);
-// localStorage.colorScheme = e.target.value;
-// });
+  // Optional: arrow key support
+  window.addEventListener('keydown', (e) => {
+    if (isScrolling) return;
+    if (e.key === 'ArrowDown') {
+      scrollToIndex(current + 1);
+    } else if (e.key === 'ArrowUp') {
+      scrollToIndex(current - 1);
+    }
+  });
 });
