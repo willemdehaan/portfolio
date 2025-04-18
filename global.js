@@ -47,3 +47,41 @@ for (let p of pages) {
 
   nav.append(a);
 }
+
+// Create the dropdown for theme selection
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+    <label class="color-scheme">
+      Theme:
+      <select>
+        <option value="light dark">Automatic</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+    `
+  );
+  
+  // Grab the select element
+  const select = document.querySelector('.color-scheme select');
+  
+  // Function to set the color scheme on the root element
+  function setColorScheme(scheme) {
+    document.documentElement.style.setProperty('color-scheme', scheme);
+  }
+  
+  // Apply saved preference on page load
+  if ("colorScheme" in localStorage) {
+    const savedScheme = localStorage.colorScheme;
+    setColorScheme(savedScheme);
+    select.value = savedScheme;
+  }
+  
+  // Handle user changes
+  select.addEventListener('input', function (event) {
+    const newScheme = event.target.value;
+    setColorScheme(newScheme);
+    localStorage.colorScheme = newScheme;
+  });
+  

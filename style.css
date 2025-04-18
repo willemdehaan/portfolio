@@ -1,7 +1,7 @@
 html {
   --color-accent:oklch(0.6 0.0982 234.64);
   accent-color: var(--color-accent);
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 body {
   /* Set line height to 1.5 times the font size
@@ -15,9 +15,10 @@ body {
     background-color: Canvas;
     color: CanvasText;
 }
-body nav {
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: var(--border-color);
   margin-bottom: 1em;
 
   a {
@@ -28,14 +29,14 @@ body nav {
     padding: 0.5em;
 
     &.current {
-      border-bottom: 0.4em solid oklch(85% 3% 200);
+      border-bottom: var(--border-color);
       padding-bottom: 0.1em;
       font-weight: bold;
     }
     &:hover {
       border-bottom: 0.4em solid var(--color-accent);
       padding-bottom: 0.1em;
-      background-color: oklch(from var(--color-accent) 95% 5% h);
+      background-color: (in oklch, var(--color-accent), canvas 85%);
       font-weight: bold;
       color: var(--color-accent);
     }
@@ -87,7 +88,7 @@ button:hover {
   border: 0.4em solid var(--color-accent);
   background-color: oklch(from var(--color-accent) 95% 5% h);
   font-weight: bold;
-  color: var(--color-accent);
+  color: color-mix(in oklch, var(--color-accent), canvas 85%);
   border-radius: 0.5em;
 }
 
@@ -194,4 +195,18 @@ body.resume section > * {
 body.resume section h2 {
   font-size: 2rem;
   margin-bottom: 1em;
+}
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+  background: inherit;
+  color: inherit;
+}
+
+.color-scheme select {
+  font-family: inherit;
 }
