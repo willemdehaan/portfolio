@@ -1,6 +1,7 @@
 html {
   --color-accent:oklch(0.6 0.0982 234.64);
   accent-color: var(--color-accent);
+  color-scheme: dark;
 }
 body {
   /* Set line height to 1.5 times the font size
@@ -11,6 +12,8 @@ body {
     padding-inline: clamp(1rem, 4vw, 2rem);
     padding-block: 2rem;
     margin-inline: max(1em, (100% - 140ch) / 2);
+    background-color: Canvas;
+    color: CanvasText;
 }
 body nav {
   display: flex;
@@ -191,10 +194,4 @@ body.resume section > * {
 body.resume section h2 {
   font-size: 2rem;
   margin-bottom: 1em;
-}
-canvas {
-  color-scheme: dark;
-}
-canvas text {
-  color-scheme: dark;
 }
