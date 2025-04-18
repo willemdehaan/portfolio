@@ -53,19 +53,22 @@ for (let p of pages) {
 if (header) header.prepend(nav);
 
 // Create the dropdown for theme selection
-document.body.insertAdjacentHTML(
-    'afterbegin',
-    `
-    <label class="color-scheme">
-      Theme:
-      <select>
-        <option value="light dark">Automatic</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
-    </label>
-    `
-  );
+let colorSchemeSelector = `
+  <label class="color-scheme">
+    Theme:
+    <select>
+      <option value="light dark">Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+`;
+
+if (header) {
+  header.insertAdjacentHTML('beforeend', colorSchemeSelector);
+} else {
+  document.body.insertAdjacentHTML('afterbegin', colorSchemeSelector);
+}
   
   // Grab the select element
   const select = document.querySelector('.color-scheme select');
