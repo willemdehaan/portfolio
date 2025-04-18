@@ -3,7 +3,7 @@ function $$(selector, context = document) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const banner = document.querySelector(".resume-banner");
+    const header = document.querySelector(".resume-header");
 
 
 // let navLinks = $$("nav a")
@@ -50,7 +50,7 @@ for (let p of pages) {
 
   nav.append(a);
 }
-if (banner) banner.prepend(nav);
+if (header) header.prepend(nav);
 
 // Create the dropdown for theme selection
 document.body.insertAdjacentHTML(
