@@ -184,13 +184,16 @@ body.resume section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: auto; /* prevents overflow issues */
+  overflow: hidden;
+  scroll-snap-stop: always;
 }
 
 /* Optional: Limit width of inner content */
 body.resume section > * {
   max-width: 800px;
   width: 100%;
+  overflow: visible;
+  min-height: 100vh;
 }
 
 /* Headings */
