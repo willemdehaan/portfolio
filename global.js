@@ -65,7 +65,7 @@ let colorSchemeSelector = `
 `;
 
 if (header) {
-  header.insertAdjacentHTML('beforeend', colorSchemeSelector);
+  header.insertAdjacentHTML('afterbegin', colorSchemeSelector);
 } else {
   document.body.insertAdjacentHTML('afterbegin', colorSchemeSelector);
 }
