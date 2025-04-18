@@ -1,8 +1,11 @@
-// console.log('IT’S ALIVE!');
-
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.querySelector(".resume-banner");
+
+
 // let navLinks = $$("nav a")
 // let currentLink = navLinks.find(
 //     (a) => a.host === location.host && a.pathname === location.pathname,
@@ -47,6 +50,7 @@ for (let p of pages) {
 
   nav.append(a);
 }
+if (banner) banner.append(nav);
 
 // Create the dropdown for theme selection
 document.body.insertAdjacentHTML(
@@ -62,6 +66,8 @@ document.body.insertAdjacentHTML(
     </label>
     `
   );
+
+  if (banner) banner.append(colorLabel);
   
   // Grab the select element
   const select = document.querySelector('.color-scheme select');
@@ -84,4 +90,4 @@ document.body.insertAdjacentHTML(
     setColorScheme(newScheme);
     localStorage.colorScheme = newScheme;
   });
-  
+});
