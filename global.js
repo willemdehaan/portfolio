@@ -52,42 +52,75 @@ for (let p of pages) {
 }
 if (header) header.prepend(nav);
 
-// Create the dropdown for theme selection
-document.body.insertAdjacentHTML(
-    'afterbegin',
-    `
-    <label class="color-scheme">
-      Theme:
-      <select>
+// // Create the dropdown for theme selection
+// document.body.insertAdjacentHTML(
+//     'afterbegin',
+//     `
+//     <label class="color-scheme">
+//       Theme:
+//       <select>
+//         <option value="light dark">Automatic</option>
+//         <option value="light">Light</option>
+//         <option value="dark">Dark</option>
+//       </select>
+//     </label>
+//     `
+//   );
+  
+//   // Grab the select element
+//   const select = document.querySelector('.color-scheme select');
+  
+//   // Function to set the color scheme on the root element
+//   function setColorScheme(scheme) {
+//     document.documentElement.style.setProperty('color-scheme', scheme);
+//   }
+  
+//   // Apply saved preference on page load
+//   if ("colorScheme" in localStorage) {
+//     const savedScheme = localStorage.colorScheme;
+//     setColorScheme(savedScheme);
+//     select.value = savedScheme;
+//   }
+  
+//   // Handle user changes
+//   select.addEventListener('input', function (event) {
+//     const newScheme = event.target.value;
+//     setColorScheme(newScheme);
+//     localStorage.colorScheme = newScheme;
+//   });
+    const label = document.createElement("label");
+    label.className = "color-scheme";
+    label.innerHTML = `
+    Theme:
+    <select>
         <option value="light dark">Automatic</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
-      </select>
-    </label>
-    `
-  );
+    </select>
+    `;
 
-  //if (banner) banner.prepend(colorLabel);
-  
-  // Grab the select element
-  const select = document.querySelector('.color-scheme select');
-  
-  // Function to set the color scheme on the root element
-  function setColorScheme(scheme) {
-    document.documentElement.style.setProperty('color-scheme', scheme);
-  }
-  
-  // Apply saved preference on page load
-  if ("colorScheme" in localStorage) {
+    if (banner && location.pathname.includes("/resume")) {
+    banner.appendChild(label);
+    } else {
+    document.body.insertAdjacentElement("afterbegin", label);
+    }
+
+    // === Theme logic ===
+    const select = label.querySelector("select");
+
+    function setColorScheme(scheme) {
+    document.documentElement.style.setProperty("color-scheme", scheme);
+    }
+
+    if ("colorScheme" in localStorage) {
     const savedScheme = localStorage.colorScheme;
     setColorScheme(savedScheme);
     select.value = savedScheme;
-  }
-  
-  // Handle user changes
-  select.addEventListener('input', function (event) {
-    const newScheme = event.target.value;
+    }
+
+    select.addEventListener("input", (e) => {
+    const newScheme = e.target.value;
     setColorScheme(newScheme);
     localStorage.colorScheme = newScheme;
-  });
+    });
 });
