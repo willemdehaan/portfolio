@@ -28,24 +28,22 @@ document.body.prepend(nav);
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
-  nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+
+  // Add base path to internal links
+  url = !url.startsWith('http') ? BASE_PATH + url : url;
+
+  let a = document.createElement('a');
+  a.href = url;
+  a.textContent = title;
+
+  // Highlight current page
+  a.classList.toggle(
+    'current',
+    a.host === location.host && a.pathname === location.pathname,
+  );
+
+  // Open external links in new tab
+  a.toggleAttribute('target', a.host !== location.host);
+
+  nav.append(a);
 }
-
-//   // Add base path to internal links
-//   url = !url.startsWith('http') ? BASE_PATH + url : url;
-
-//   let a = document.createElement('a');
-//   a.href = url;
-//   a.textContent = title;
-
-//   // Highlight current page
-//   a.classList.toggle(
-//     'current',
-//     a.host === location.host && a.pathname === location.pathname,
-//   );
-
-//   // Open external links in new tab
-//   a.toggleAttribute('target', a.host !== location.host);
-
-//   nav.append(a);
-// }
