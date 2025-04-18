@@ -18,7 +18,7 @@ body {
 nav {
   --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
-  border-bottom: var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1em;
 
   a {
@@ -29,14 +29,14 @@ nav {
     padding: 0.5em;
 
     &.current {
-      border-bottom: var(--border-color);
+      border-bottom: 0.1em solid var(--border-color);
       padding-bottom: 0.1em;
       font-weight: bold;
     }
     &:hover {
       border-bottom: 0.4em solid var(--color-accent);
       padding-bottom: 0.1em;
-      background-color: (in oklch, var(--color-accent), canvas 85%);
+      background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
       font-weight: bold;
       color: var(--color-accent);
     }
@@ -86,7 +86,7 @@ button {
 }
 button:hover {
   border: 0.4em solid var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   font-weight: bold;
   color: color-mix(in oklch, var(--color-accent), canvas 85%);
   border-radius: 0.5em;
@@ -148,7 +148,7 @@ h2, h3, h4, h5, h6 {
   width: 100%;
   background-color: white;
   z-index: 10;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .resume-banner {
