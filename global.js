@@ -59,11 +59,8 @@ let colorSchemeSelector = `
   </label>
 `;
 
-if (header) {
-  header.insertAdjacentHTML('afterbegin', colorSchemeSelector);
-} else {
+
   document.body.insertAdjacentHTML('afterbegin', colorSchemeSelector);
-}
   
   // Grab the select element
   const select = document.querySelector('.color-scheme select');
