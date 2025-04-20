@@ -86,40 +86,32 @@ if (header) {
     setColorScheme(newScheme);
     localStorage.colorScheme = newScheme;
   });
-  const sections = document.querySelectorAll('body.resume section');
+
+  if (!document.body.classList.contains("resume")) return;
+
+  const slides = Array.from(document.querySelectorAll("main.slideshow section"));
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+
+  if (!slides.length || !prev || !next) return;
+
   let current = 0;
-  let isScrolling = false;
 
-  const scrollToIndex = (index) => {
-    if (index >= 0 && index < sections.length) {
-      isScrolling = true;
-      sections[index].scrollIntoView({ behavior: 'smooth' });
-      current = index;
+  function showSlide(i) {
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle("active", idx === i);
+    });
+  }
 
-      // Debounce to prevent rapid scroll
-      setTimeout(() => {
-        isScrolling = false;
-      }, 1000); // adjust this as needed
-    }
-  };
-
-  // Listen to wheel events
-  document.querySelector('main').addEventListener('wheel', (e) => {
-    if (isScrolling) return;
-    if (e.deltaY > 0) {
-      scrollToIndex(current + 1);
-    } else if (e.deltaY < 0) {
-      scrollToIndex(current - 1);
-    }
-  }, { passive: true });
-
-  // Optional: arrow key support
-  window.addEventListener('keydown', (e) => {
-    if (isScrolling) return;
-    if (e.key === 'ArrowDown') {
-      scrollToIndex(current + 1);
-    } else if (e.key === 'ArrowUp') {
-      scrollToIndex(current - 1);
-    }
+  prev.addEventListener("click", () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
   });
+
+  next.addEventListener("click", () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+
+  showSlide(current);
 });
