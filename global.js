@@ -34,7 +34,7 @@ function $$(selector, context = document) {
       nav.appendChild(a);
     }
   
-    header.prepend(nav);
+    //header.prepend(nav);
   
     // === Color Scheme Selector ===
     const colorSchemeHTML = `
@@ -48,7 +48,7 @@ function $$(selector, context = document) {
       </label>
     `;
   
-    header.insertAdjacentHTML("beforeend", colorSchemeHTML);
+    //header.insertAdjacentHTML("beforeend", colorSchemeHTML);
   
     const select = document.querySelector(".color-scheme select");
   

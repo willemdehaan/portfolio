@@ -187,7 +187,7 @@ body.resume main.slideshow section {
 }
 
 body.resume main.slideshow section.active {
-  display: flex;
+  display: block;
 }
 
 /* Optional: Limit width of inner content */
