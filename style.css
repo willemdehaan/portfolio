@@ -176,8 +176,8 @@ body.resume main.slideshow {
 
 body.resume main.slideshow section {
   display: none;
-  height: 50vh;
-  padding: 2em;
+  height: 45vh;
+  padding: 1em;
   box-sizing: border-box;
   flex-direction: column;
   justify-content: center;
