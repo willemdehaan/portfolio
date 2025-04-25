@@ -113,3 +113,45 @@ let colorSchemeSelector = `
 
   showSlide(current);
 });
+
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+    return [];
+  }
+}
+
+// Render Projects utility
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  if (!containerElement || !Array.isArray(projects)) {
+    console.warn('Invalid container element or project data');
+    return;
+  }
+
+  containerElement.innerHTML = ''; // Clear previous content
+
+  if (projects.length === 0) {
+    containerElement.innerHTML = '<p>No projects found.</p>';
+    return;
+  }
+
+  for (const project of projects) {
+    const article = document.createElement('article');
+    const safeHeading = /^h[1-6]$/.test(headingLevel) ? headingLevel : 'h2';
+
+    article.innerHTML = `
+      <${safeHeading}>${project.title || 'Untitled Project'}</${safeHeading}>
+      ${project.image ? `<img src="${project.image}" alt="${project.title || 'Project Image'}">` : ''}
+      <p>${project.description || 'No description available.'}</p>
+    `;
+
+    containerElement.appendChild(article);
+  }
+}
