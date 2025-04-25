@@ -12,6 +12,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Automatically update project count
   if (titleElement) {
-    titleElement.textContent = `Projects (${projects.length})`;
+    titleElement.textContent = `${projects.length} Projects`;
   }
 });
