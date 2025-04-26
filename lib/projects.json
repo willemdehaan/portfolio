@@ -1,18 +1,20 @@
 [
     {
         "title": "Bruin Actuarial Society Case Competition",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "This case competition tasked myself along with my 3 fellow team members to conduct an insurance portfolio analysis for a realty company. \n                    We were given data on the accident history for the estate assets held by this company. \n                    Using this information we were able to run a Monte Carlo Simulation to conduct a stress test on each insurance option, \n                    which allowed us to determine which option best satisfied our client's needs\n                    To view our presentation as well as the other finalists click here."
     },
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "Economic Analysis of Power Outages",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint inventore veritatis nihil ipsa dolores nesciunt, veniam mollitia magnam quas praesentium unde accusantium. Laboriosam alias assumenda saepe ipsam enim dolorem! Laudantium?"
+        "description": "This project examines a dataset of major power outages from January 2000 to July 2016 provided by Purdue's Laboratory for Advancing Sustainable Critical Infrastructure. The goal of our analysis is to provide an economic perspective in which to examine disparities within the utility industry. This comprehensive analysis revolves around this central question: How can econonomic factors explain the length and cause of power outages?"
     },
     {
-        "title": "Dolorum exercitationem cumque corporis.",
+        "title": "The Vilification of Processed Foods: Are they as Nutrient Deficient as Claimed?",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Odit provident quisquam debitis saepe doloribus dicta soluta incidunt ab pariatur, adipisci nesciunt sequi accusantium officiis magnam earum quos ducimus temporibus quas mollitia eos velit libero sit vel quasi. Ducimus?"
+        "description": "Sought to create a visualization which analyzed the nutrient scores for foods of different processing levels. Through my data visualization I hope to challenge the mainstream perception of what foods are considered healthy, and to advocate for a smarter discussion surrounding food insecurity."
     },
     {
         "title": "Ducimus aut praesentium voluptatibus!",
