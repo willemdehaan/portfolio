@@ -76,5 +76,6 @@ searchInput.addEventListener('input', (event) => {
   query = event.target.value;
   let filtered = filterProjects(query);
   renderPieChart(filtered);
+  renderProjects(filtered, projectsContainer, 'h2')
 });
 });
