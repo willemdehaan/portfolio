@@ -256,3 +256,21 @@ body.resume main h2 {
   margin: 0;
   grid-row: 2;
 }
+
+.project-year {
+  color: gray;
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-size: 0.95em;
+  margin-top: 0.25em;
+}
+.project-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
