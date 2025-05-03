@@ -269,8 +269,40 @@ body.resume main h2 {
   flex-direction: column;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-block: 2em;
+}
+
 #projects-pie-plot {
   max-width: 20em;
-  margin-block: 2em;
+  flex-shrink: 0;
   overflow: visible;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  flex: 1;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  list-style: none;
+}
+
+.legend .swatch {
+  width: 1em;
+  aspect-ratio: 1 / 1;
+  background: var(--color);
+  border-radius: 0.25em;
+  display: inline-block;
 }

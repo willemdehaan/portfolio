@@ -17,24 +17,41 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
 // Sample data for pie chart
-let data = [1, 2, 3, 4, 5, 5];
+// Define labeled data
+let data = [
+  { value: 1, label: 'apples' },
+  { value: 2, label: 'oranges' },
+  { value: 3, label: 'mangos' },
+  { value: 4, label: 'pears' },
+  { value: 5, label: 'limes' },
+  { value: 5, label: 'cherries' },
+];
 
-// Arc generator (outerRadius = 50, innerRadius = 0 for full pie)
-let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-
-// Use d3.pie to generate slice angles
-let sliceGenerator = d3.pie();
-let arcData = sliceGenerator(data);
-
-// Color scale for each slice
+// Create color scale
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-// Select SVG and draw paths for each slice
-let svg = d3.select('#projects-pie-plot');
+// Arc generator
+let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
-arcData.forEach((d, i) => {
-  svg.append('path')
+// Slice generator (extracts `value` from data)
+let sliceGenerator = d3.pie().value(d => d.value);
+let arcData = sliceGenerator(data);
+
+// Add slices to SVG
+let svg = d3.select('#projects-pie-plot');
+arcData.forEach((d, idx) => {
+  svg
+    .append('path')
     .attr('d', arcGenerator(d))
-    .attr('fill', colors(i));
+    .attr('fill', colors(idx));
+});
+
+// Build legend
+let legend = d3.select('.legend');
+data.forEach((d, idx) => {
+  legend
+    .append('li')
+    .attr('style', `--color: ${colors(idx)}`)
+    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
 });
 });
