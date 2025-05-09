@@ -350,5 +350,10 @@ path.selected {
   fill: oklch(60% 45% 0) !important;
 }
 
+.gridlines line {
+  stroke: #ccc;
+  stroke-opacity: 0.5;
+}
+
 
 
