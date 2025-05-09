@@ -132,7 +132,7 @@ async function renderScatterPlot(data, commits) {
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
-    .attr('r', (d) => rScale(d.totalLines))
+    .attr('r', (d) => rScale)
     .attr('fill', 'steelblue')
     .style('fill-opacity', 0.7)
     .style('transition', 'transform 0.2s ease')
