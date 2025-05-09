@@ -84,7 +84,6 @@ async function renderScatterPlot(data, commits) {
     height: height - margin.top - margin.bottom,
   };
 
-  // Select existing SVG
   const svg = d3
     .select('#chart svg')
     .attr('viewBox', `0 0 ${width} ${height}`)
@@ -100,6 +99,15 @@ async function renderScatterPlot(data, commits) {
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
 
+  // Radius scale (square root for perceptual accuracy)
+  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+  const rScale = d3.scaleSqrt()
+    .domain([minLines, maxLines])
+    .range([2, 30]);
+
+  // Clear previous gridlines
+  svg.selectAll('.gridlines').remove();
+
   // Gridlines
   svg.append('g')
     .attr('class', 'gridlines')
@@ -110,24 +118,38 @@ async function renderScatterPlot(data, commits) {
         .tickSize(-usableArea.width)
     );
 
+  // Sort commits so larger dots render underneath
+  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+
+  // Clear previous dots
+  svg.selectAll('.dots').remove();
+
   // Dots
   const dots = svg.append('g').attr('class', 'dots');
-  dots
-    .selectAll('circle')
-    .data(commits)
-    .join('circle')
-    .attr('cx', d => xScale(d.datetime))
-    .attr('cy', d => yScale(d.hourFrac))
-    .attr('r', 5)
-    .attr('fill', 'steelblue')
-    .on('mouseenter', (event, commit) => {
-        renderTooltipContent(commit);
-        updateTooltipVisibility(true);
-        updateTooltipPosition(event);
-  })
-  .on('mousemove', updateTooltipPosition)
-  .on('mouseleave', () => updateTooltipVisibility(false));
 
+  dots.selectAll('circle')
+    .data(sortedCommits)
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', (d) => rScale(d.totalLines))
+    .attr('fill', 'steelblue')
+    .style('fill-opacity', 0.7)
+    .style('transition', 'transform 0.2s ease')
+    .on('mouseenter', (event, commit) => {
+      d3.select(event.currentTarget).style('fill-opacity', 1);
+      renderTooltipContent(commit);
+      updateTooltipVisibility(true);
+      updateTooltipPosition(event);
+    })
+    .on('mousemove', updateTooltipPosition)
+    .on('mouseleave', (event) => {
+      d3.select(event.currentTarget).style('fill-opacity', 0.7);
+      updateTooltipVisibility(false);
+    });
+
+  // Clear previous axes
+  svg.selectAll('.x-axis, .y-axis').remove();
 
   // Axes
   const xAxis = d3.axisBottom(xScale);
@@ -136,10 +158,12 @@ async function renderScatterPlot(data, commits) {
   );
 
   svg.append('g')
+    .attr('class', 'x-axis')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
     .call(xAxis);
 
   svg.append('g')
+    .attr('class', 'y-axis')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis);
 }
@@ -159,7 +183,7 @@ function renderTooltipContent(commit) {
   document.getElementById('commit-date').textContent = commit.datetime?.toLocaleDateString('en', { dateStyle: 'full' });
   document.getElementById('commit-time').textContent = commit.datetime?.toLocaleTimeString('en', { timeStyle: 'short' });
   document.getElementById('commit-author').textContent = commit.author || 'Unknown';
-  document.getElementById('commit-lines').textContent = `${commit.linesAdded ?? 0} added, ${commit.linesRemoved ?? 0} removed`;
+  document.getElementById('commit-lines').textContent = commit.totalLines?? '—';
 }
 
 function updateTooltipVisibility(isVisible) {
