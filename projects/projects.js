@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return projects.filter(p => {
       const matchesYear = selectedYear ? p.year === selectedYear : true;
       const matchesQuery = query.trim() === ''
-        || Object.values(p).join('\n').toLowerCase().includes(query.toLowerCase());
+        Object.values(p).join('\n').toLowerCase().includes(query.toLowerCase());
       return matchesYear && matchesQuery;
     });
   }
