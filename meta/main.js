@@ -151,6 +151,7 @@ renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 
 function renderTooltipContent(commit) {
+  console.log(commit);
   if (!commit || Object.keys(commit).length === 0) return;
 
   document.getElementById('commit-link').href = commit.url;
