@@ -21,7 +21,7 @@ function processCommits(data) {
 
       const ret = {
         id: commit,
-        url: 'https://github.com/vis-society/lab-7/commit/' + commit,
+        url: 'https://github.com/willemdehaan/portfolio/commit/' + commit,
         author,
         date,
         time,
@@ -70,10 +70,6 @@ function renderCommitInfo(data, commits) {
   dl.append('dd').text(`${deepest?.depth} (${deepest?.file})`);
 }
 
-let data = await loadData();
-let commits = processCommits(data);
-renderCommitInfo(data, commits);
-
 async function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
@@ -88,10 +84,9 @@ async function renderScatterPlot(data, commits) {
     height: height - margin.top - margin.bottom,
   };
 
-  // Create SVG
+  // Select existing SVG
   const svg = d3
-    .select('#chart')
-    .append('svg')
+    .select('#chart svg')
     .attr('viewBox', `0 0 ${width} ${height}`)
     .style('overflow', 'visible');
 
@@ -105,7 +100,7 @@ async function renderScatterPlot(data, commits) {
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
 
-  // Gridlines (horizontal only)
+  // Gridlines
   svg.append('g')
     .attr('class', 'gridlines')
     .attr('transform', `translate(${usableArea.left}, 0)`)
@@ -140,4 +135,11 @@ async function renderScatterPlot(data, commits) {
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis);
 }
+
+// Run everything
+let data = await loadData();
+let commits = processCommits(data);
+renderCommitInfo(data, commits);
+renderScatterPlot(data, commits);
+
 
