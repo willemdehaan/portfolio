@@ -355,5 +355,44 @@ path.selected {
   stroke-opacity: 0.5;
 }
 
+dl.info {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25em 1em;
+  margin: 0;
+  font-size: 0.875rem;
+  color: #333;
+  transition: opacity 500ms, visibility 500ms;
+  padding: 0.5em 1em;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  max-width: 300px;
+}
+
+circle {
+  transition: transform 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+
 
 
