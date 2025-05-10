@@ -138,7 +138,7 @@ async function renderScatterPlot(data, commits) {
       updateTooltipVisibility(false);
     });
 
-  svg.append('g')
+    svg.append('g')
     .attr('class', 'y-axis')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(
@@ -146,6 +146,10 @@ async function renderScatterPlot(data, commits) {
         (d) => String(d % 24).padStart(2, '0') + ':00'
       )
     );
+    svg.append('g')
+    .attr('class', 'x-axis')
+    .attr('transform', `translate(0, ${usableArea.bottom})`)
+    .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b %d')));
 
   // Brush behavior
   const brush = d3.brush()
