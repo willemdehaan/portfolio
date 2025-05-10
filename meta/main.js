@@ -66,7 +66,7 @@ function renderCommitInfo(data, commits) {
   dl.append('dd').text(d3.mean(data, d => d.length).toFixed(1));
 
   dl.append('dt').text('Deepest line');
-  const deepest = d3.greatest(data, d => d.depth);
+  const deepest = d3.max(data, d => d.depth);
   dl.append('dd').text(`${deepest?.depth} (${deepest?.file})`);
 }
 
