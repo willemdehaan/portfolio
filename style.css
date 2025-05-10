@@ -334,6 +334,28 @@ body.resume main h2 {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
 
+#stats .stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 32px;
+  padding: 20px 0;
+  font-family: sans-serif;
+}
+
+#stats dt {
+  font-size: 12px;
+  color: #6b7280; /* Tailwind slate-500-ish */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+#stats dd {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
 /* Hover effect: fade others */
 svg:has(path:hover) path:not(:hover) {
   opacity: 0.5;
