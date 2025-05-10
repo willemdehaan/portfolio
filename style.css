@@ -433,6 +433,27 @@ circle.selected {
   fill: #ff6b6b;
 }
 
+#language-breakdown.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px;
+  padding-top: 12px;
+  font-family: sans-serif;
+}
+
+#language-breakdown dt {
+  font-size: 12px;
+  color: #6b7280; /* muted gray */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+#language-breakdown dd {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
 
 
 
