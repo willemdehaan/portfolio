@@ -2,41 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webpage Stats</title>
-  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Repo Evolution Visualization</title>
+  <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
-  <h1>Meta</h1>
+  <h1>Repo Evolution Visualization</h1>
+
+  <!-- Summary stats -->
   <h2>Summary Statistics</h2>
   <div id="stats"></div>
 
-  <h2>Commits by time of day</h2>
-  <div id="chart">
-    <svg></svg>
+  <!-- Scrollytelling Part 1: commits → scatter -->
+  <div id="scrolly-1">
+    <div id="scatter-story"></div>
+    <div id="scatter-plot">
+      <h2>Commits by Time of Day</h2>
+      <div id="chart"><svg></svg></div>
+      <h3 id="selection-count">No commits selected</h3>
+    </div>
   </div>
 
+  <!-- Scrollytelling Part 2: commits → file‐race -->
+  <div id="scrolly-2">
+  <div id="files-plot">
+    <h2>Race for the Biggest File</h2>
+    <div id="files-container">
+      <dl id="files"></dl>
+    </div>
+  </div>
+  <div id="files-story"></div>
+</div>
+
+  <!-- Tooltip (optional) -->
   <dl id="commit-tooltip" class="info tooltip" hidden>
-    <dt>Commit</dt>
-    <dd><a href="" id="commit-link" target="_blank"></a></dd>
-
-    <dt>Date</dt>
-    <dd id="commit-date"></dd>
-
-    <dt>Time</dt>
-    <dd id="commit-time"></dd>
-
-    <dt>Author</dt>
-    <dd id="commit-author"></dd>
-
-    <dt>Lines Edited</dt>
-    <dd id="commit-lines"></dd>
+    <dt>Commit</dt><dd><a href="" id="commit-link" target="_blank"></a></dd>
+    <dt>Date</dt><dd id="commit-date-tooltip"></dd>
+    <dt>Time</dt><dd id="commit-time-tooltip"></dd>
+    <dt>Author</dt><dd id="commit-author"></dd>
+    <dt>Lines Edited</dt><dd id="commit-lines"></dd>
   </dl>
-
-  <h3 id="selection-count">No commits selected</h3>
-  <div id="language-breakdown" class="language-grid"></div>
-
 
   <script type="module" src="../global.js"></script>
   <script type="module" src="main.js"></script>
 </body>
+</html>
